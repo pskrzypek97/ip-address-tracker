@@ -1,0 +1,26 @@
+{
+	"name": "ip-address-tracker",
+	"version": "1.0.0",
+	"description": "IP address tracker",
+	"main": "index.js",
+	"scripts": {
+		"start": "parcel index.html"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/pskrzypek97/ip-address-tracker.git"
+	},
+	"author": "pskrzypek97",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/pskrzypek97/ip-address-tracker/issues"
+	},
+	"homepage": "https://github.com/pskrzypek97/ip-address-tracker#readme",
+	"devDependencies": {
+		"@parcel/transformer-sass": "^2.5.0",
+		"events": "^3.3.0",
+		"parcel": "^2.5.0",
+		"process": "^0.11.10",
+		"util": "^0.12.4"
+	}
+}
