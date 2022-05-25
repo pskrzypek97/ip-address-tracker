@@ -1,13 +1,26 @@
-const getJSON = async (url) => {
+import * as model from './model';
+import dataView from './views/dataView';
+
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
+
+if (module.hot) {
+	module.hot.accept();
+}
+
+const controlData = async () => {
 	try {
-		const res = await fetch(url);
-		const data = await res.json();
-		console.log(data);
+		// 0. Render spinner
+		dataView.renderSpinner();
+
+		// 1. Load ip data
+		await model.loadData();
+
+		// 2. Render the data in .results window
+		dataView.renderData(model.state.data);
 	} catch (err) {
-		console.error(err.message);
+		dataView.renderError();
 	}
 };
 
-getJSON(
-	'https://geo.ipify.org/api/v2/country?apiKey=at_hWKDLGgfJMFzmPvOspu5xQT3Do5Hc'
-);
+controlData();

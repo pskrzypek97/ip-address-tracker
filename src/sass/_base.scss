@@ -67,8 +67,14 @@ body {
 		background-position: center;
 	}
 
-	// &__bottom {
-	// 	// height: 68.1vh;
-	// 	// background-color: $color-very-dark-grey;
-	// }
+	&__bottom {
+		height: 66.6vh;
+		// background-color: $color-very-dark-grey;
+	}
+}
+
+.map {
+	height: 100%;
+	display: flex;
+	align-items: center;
 }
