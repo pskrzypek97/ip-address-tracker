@@ -70,6 +70,7 @@ body {
 	&__bottom {
 		height: 66.6vh;
 		// background-color: $color-very-dark-grey;
+		z-index: -1 !important;
 	}
 }
 
@@ -77,4 +78,5 @@ body {
 	height: 100%;
 	display: flex;
 	align-items: center;
+	z-index: -1 !important;
 }
