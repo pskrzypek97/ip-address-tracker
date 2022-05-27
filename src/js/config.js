@@ -1,5 +1,4 @@
-export const API_KEY =
-	'336231b0579d71084dfb08626a78bb35e3842462714c3bc04169b277';
-export const API_URL = 'https://api.ipdata.co?api-key=';
+export const API_KEY = 'at_hWKDLGgfJMFzmPvOspu5xQT3Do5Hc';
+export const API_URL = 'https://geo.ipify.org/api/v2/country,city?apiKey=';
 export const TIMEOUT_IN_SEC = 5;
 export const MAP_ZOOM = 13;

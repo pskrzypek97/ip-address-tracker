@@ -13,19 +13,20 @@ class Data {
 export const state = { data: {} };
 
 const createDataObject = (data) => {
-	const { ip, city, region, latitude, longitude, time_zone, asn } = data;
+	const { ip, location, isp } = data;
+	const { region, city, lat, lng, timezone } = location;
 	return new Data(
 		ip,
 		{
 			city,
 			region,
 			coords: {
-				latitude,
-				longitude,
+				lat,
+				lng,
 			},
 		},
-		time_zone.offset,
-		asn.name
+		timezone,
+		isp
 	);
 };
 

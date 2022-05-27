@@ -3,7 +3,7 @@
 	z-index: 1000 !important;
 
 	top: 23rem;
-	height: 16rem;
+	height: 18rem;
 
 	display: flex;
 	justify-content: space-between;
@@ -28,6 +28,7 @@
 
 		@media only screen and (max-width: $bp-medium) {
 			align-items: center;
+			text-align: center;
 		}
 	}
 
