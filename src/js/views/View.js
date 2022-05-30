@@ -31,4 +31,8 @@ export default class View {
 		this.clear();
 		this._parentElement.insertAdjacentHTML('afterbegin', markup);
 	}
+
+	addHandlerRender(handler) {
+		window.addEventListener('load', handler);
+	}
 }

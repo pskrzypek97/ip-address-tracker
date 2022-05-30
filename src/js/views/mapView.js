@@ -6,17 +6,30 @@ class MapView extends View {
 	_parentElement = document.querySelector('.map');
 	_data;
 	_map;
+	_marker;
 	_message = 'Failed to load the map. Please, try again!';
 
 	renderMap(data) {
 		this._data = data;
-		this.clear();
 		this._generateMap();
 		this._generateMarker();
 	}
 
+	moveMap(data) {
+		this._data = data;
+		this._map.panTo(this._getCoords()).zoomIn(MAP_ZOOM);
+		this._marker.setLatLng(this._getCoords());
+	}
+
+	removeMap() {
+		this._map.remove();
+	}
+
 	_generateMap() {
-		this._map = L.map('map').setView(this._getCoords(), MAP_ZOOM);
+		this._map = L.map('map', { zoomControl: false }).setView(
+			this._getCoords(),
+			MAP_ZOOM
+		);
 
 		return L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 			attribution:
@@ -30,10 +43,14 @@ class MapView extends View {
 			<svg class="marker">
               <use href="${icons}#icon-map-pin-fill"></use>
             </svg>`,
-			iconSize: [0, 0],
+			className: 'marker',
+			iconSize: [80, 80],
+			iconAnchor: [40, 80],
 		});
 
-		return L.marker(this._getCoords(), { icon: myIcon }).addTo(this._map);
+		this._marker = L.marker(this._getCoords(), { icon: myIcon }).addTo(
+			this._map
+		);
 	}
 
 	_getCoords() {

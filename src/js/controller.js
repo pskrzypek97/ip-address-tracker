@@ -1,6 +1,8 @@
 import * as model from './model';
 import dataView from './views/dataView';
 import mapView from './views/mapView';
+import searchView from './views/searchView';
+import { RELOAD_IN_SEC } from './config';
 
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
@@ -27,4 +29,28 @@ const controlDataAndMap = async () => {
 	}
 };
 
-controlDataAndMap();
+const controlSearchResult = async () => {
+	try {
+		// 1. Get search query
+		const query = searchView.getQuery();
+		if (!query) return;
+
+		// 2. Load search result
+		await model.loadSearchResult(query);
+
+		// 3. Render search result
+		dataView.renderData(model.state.data);
+		mapView.moveMap(model.state.data);
+	} catch (err) {
+		mapView.renderError();
+		mapView.removeMap();
+		dataView.clear();
+	}
+};
+
+const init = () => {
+	dataView.addHandlerRender(controlDataAndMap);
+	searchView.addHandlerSearch(controlSearchResult);
+};
+
+init();

@@ -20,3 +20,8 @@ export const getJSON = async (url) => {
 		throw err;
 	}
 };
+
+export const isDomain = (query) => {
+	const queryArr = query.split('');
+	return queryArr.some((char) => /[a-zA-Z]/.test(char));
+};
