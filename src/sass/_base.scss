@@ -49,6 +49,7 @@ body {
 }
 
 .container {
+	height: 100vh;
 	display: flex;
 	flex-direction: column;
 
@@ -68,12 +69,7 @@ body {
 	}
 
 	&__bottom {
-		height: 66.6vh;
-		// background-color: $color-very-dark-grey;
-
-		// @media only screen and (max-width: $bp-medium) {
-		// 	height: 72vh;
-		// }
+		height: 100%;
 	}
 }
 

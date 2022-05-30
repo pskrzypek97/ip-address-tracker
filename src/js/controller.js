@@ -38,12 +38,13 @@ const controlSearchResult = async () => {
 		// 2. Load search result
 		await model.loadSearchResult(query);
 
-		// 3. Render search result
+		// 3. Render the search data in .results window
 		dataView.renderData(model.state.data);
+
+		// 4. Load the result on map
 		mapView.moveMap(model.state.data);
 	} catch (err) {
 		mapView.renderError();
-		mapView.removeMap();
 		dataView.clear();
 	}
 };

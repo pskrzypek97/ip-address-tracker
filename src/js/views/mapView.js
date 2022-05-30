@@ -4,40 +4,36 @@ import icons from 'url:../../images/icons.svg';
 
 class MapView extends View {
 	_parentElement = document.querySelector('.map');
-	_data;
-	_map;
-	_marker;
-	_message = 'Failed to load the map. Please, try again!';
+	#data;
+	#map;
+	#marker;
+	message = 'Failed to load the map. Please, reload the page!';
 
 	renderMap(data) {
-		this._data = data;
-		this._generateMap();
-		this._generateMarker();
+		this.#data = data;
+		this.#generateMap();
+		this.#generateMarker();
 	}
 
 	moveMap(data) {
-		this._data = data;
-		this._map.panTo(this._getCoords()).zoomIn(MAP_ZOOM);
-		this._marker.setLatLng(this._getCoords());
+		this.#data = data;
+		this.#map.panTo(this.#getCoords()).zoomIn(MAP_ZOOM);
+		this.#marker.setLatLng(this.#getCoords());
 	}
 
-	removeMap() {
-		this._map.remove();
-	}
-
-	_generateMap() {
-		this._map = L.map('map', { zoomControl: false }).setView(
-			this._getCoords(),
+	#generateMap() {
+		this.#map = L.map('map', { zoomControl: false }).setView(
+			this.#getCoords(),
 			MAP_ZOOM
 		);
 
 		return L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 			attribution:
 				'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-		}).addTo(this._map);
+		}).addTo(this.#map);
 	}
 
-	_generateMarker() {
+	#generateMarker() {
 		const myIcon = L.divIcon({
 			html: `
 			<svg class="marker">
@@ -48,13 +44,13 @@ class MapView extends View {
 			iconAnchor: [40, 80],
 		});
 
-		this._marker = L.marker(this._getCoords(), { icon: myIcon }).addTo(
-			this._map
+		this.#marker = L.marker(this.#getCoords(), { icon: myIcon }).addTo(
+			this.#map
 		);
 	}
 
-	_getCoords() {
-		const { lat, lng } = this._data.location.coords;
+	#getCoords() {
+		const { lat, lng } = this.#data.location.coords;
 		return [lat, lng];
 	}
 }
