@@ -1,0 +1,80 @@
+// COLOR VARIABLES
+$color-very-dark-grey: #2b2b2b;
+$color-dark-grey: #969696;
+$color-white: #fff;
+
+// FONT VARIABLE
+$font-primary: 'Rubik', sans-serif;
+
+// RESPONSIVE BREAKPOINTS
+$bp-big: 75em; //1200/16px
+$bp-medium: 56.25em; //900/16px
+$bp-small: 31.25em; //500/16px
+
+// MIXINS
+@mixin border-radius($type, $width) {
+	@if $type == btn {
+		border-top-right-radius: $width;
+		border-bottom-right-radius: $width;
+	}
+
+	@if $type == input {
+		border-top-left-radius: $width;
+		border-bottom-left-radius: $width;
+	}
+}
+
+/////////////////////////////////////////////////////
+
+*,
+*::after,
+*::before {
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
+}
+
+html {
+	box-sizing: border-box;
+	font-size: 62.5%;
+
+	@media only screen and (max-width: $bp-big) {
+		font-size: 50%;
+	}
+}
+
+body {
+	font-family: $font-primary;
+	line-height: 1.7;
+}
+
+.container {
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+
+	&__top {
+		position: relative;
+
+		padding-top: 2.5rem;
+
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+		background-image: url('../images/pattern-bg.png');
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center;
+	}
+
+	&__bottom {
+		height: 100%;
+	}
+}
+
+.map {
+	height: 100%;
+	display: flex;
+	align-items: center;
+}
