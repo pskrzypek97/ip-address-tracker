@@ -7,7 +7,7 @@ class MapView extends View {
 	#data;
 	#map;
 	#marker;
-	message = 'Failed to load the map. Please, reload the page!';
+	_message = 'Failed to load the map. Please, reload the page!';
 
 	renderMap(data) {
 		this.#data = data;
@@ -17,7 +17,7 @@ class MapView extends View {
 
 	moveMap(data) {
 		this.#data = data;
-		this.#map.panTo(this.#getCoords()).zoomIn(MAP_ZOOM);
+		this.#map.panTo(this.#getCoords());
 		this.#marker.setLatLng(this.#getCoords());
 	}
 

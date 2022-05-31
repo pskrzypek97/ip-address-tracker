@@ -2,14 +2,9 @@ import * as model from './model';
 import dataView from './views/dataView';
 import mapView from './views/mapView';
 import searchView from './views/searchView';
-import { RELOAD_IN_SEC } from './config';
 
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
-
-if (module.hot) {
-	module.hot.accept();
-}
 
 const controlDataAndMap = async () => {
 	try {
