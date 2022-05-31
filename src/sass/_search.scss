@@ -22,6 +22,7 @@
 	&__btn {
 		display: flex;
 		justify-content: center;
+		align-items: center;
 
 		border: none;
 		@include border-radius(btn, 1rem);
