@@ -1,6 +1,5 @@
 import { getJSON, isDomain } from './helpers';
 import { API_KEY, API_URL } from './config.js';
-import { async } from 'regenerator-runtime';
 
 class Data {
 	constructor(ip, location, timezone, isp) {
@@ -27,13 +26,15 @@ const createDataObject = (data) => {
 			},
 		},
 		timezone,
-		isp
+		isp,
+		isDomain
 	);
 };
 
 export const loadData = async () => {
 	try {
 		const data = await getJSON(`${API_URL}${API_KEY}`);
+
 		state.data = createDataObject(data);
 	} catch (err) {
 		throw err;
@@ -45,8 +46,8 @@ export const loadSearchResult = async (query) => {
 		const data = await getJSON(
 			`${API_URL}${API_KEY}${isDomain ? '&domain=' : '&ipAddress='}${query}`
 		);
-
 		state.data = createDataObject(data);
+		state.data.isDomain = isDomain(query);
 	} catch (err) {
 		throw err;
 	}
