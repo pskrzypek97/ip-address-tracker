@@ -13,7 +13,7 @@ IP address tracker that allows users to check their IP information and search fo
 
 ## Bugs
 
-- ~~Map crashes when searched domain or IP address does not exist.~~ Bug fixed by moving error to data window.
+- <strike>Map crashes when searched domain or IP address does not exist.</strike> Bug fixed by moving error to data window.
 - Data and map do not load when AdBlock or Ublock are enabled in the user's browser.
 
 ## Link
