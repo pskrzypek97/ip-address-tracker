@@ -20,7 +20,8 @@ const controlDataAndMap = async () => {
 		// 3. Render map
 		mapView.renderMap(model.state.data);
 	} catch (err) {
-		mapView.renderError();
+		dataView.renderError();
+		mapView.moveMapOnError();
 	}
 };
 
@@ -39,8 +40,8 @@ const controlSearchResult = async () => {
 		// 4. Load the result on map
 		mapView.moveMap(model.state.data);
 	} catch (err) {
-		mapView.renderError();
-		dataView.clear();
+		dataView.renderError();
+		mapView.moveMapOnError();
 	}
 };
 

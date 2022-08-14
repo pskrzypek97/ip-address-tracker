@@ -1,5 +1,5 @@
 import View from './View';
-import { MAP_ZOOM } from '../config';
+import { MAP_ZOOM, DEFAULT_COORDS } from '../config';
 import icons from 'url:../../images/icons.svg';
 
 class MapView extends View {
@@ -7,7 +7,6 @@ class MapView extends View {
 	#data;
 	#map;
 	#marker;
-	_message = 'Failed to load the map. Please, reload the page!';
 
 	renderMap(data) {
 		this.#data = data;
@@ -19,6 +18,11 @@ class MapView extends View {
 		this.#data = data;
 		this.#map.panTo(this.#getCoords());
 		this.#marker.setLatLng(this.#getCoords());
+	}
+
+	moveMapOnError() {
+		this.#map.panTo(DEFAULT_COORDS);
+		this.#marker.setLatLng(DEFAULT_COORDS);
 	}
 
 	#generateMap() {
